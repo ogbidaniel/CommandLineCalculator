@@ -7,10 +7,35 @@ void tokenizer(const string& problem){
     for(size_t i = 0; i < problem.size(); i++){
         char currentChar = problem[i];
 
-        switch (currentChar)
-        {
-            case (isdigit(currentChar)):
-            
+        // check for digit
+        if (isdigit(currentChar)){
+            cout << "digit: " << currentChar << "\n";
+        }
+        // check for operator
+        else if (currentChar == '+' || currentChar == '-' || currentChar == '*' || currentChar == '/'){
+            cout << "operator: " << currentChar << "\n";
+        }
+        // check for parentheses
+        else if (currentChar == '(' || currentChar == ')'){
+            cout << "parenthesis: " << currentChar << "\n";
+        }
+        // check for whitespace
+        else if (currentChar == ' '){
+            cout << "whitespace\n";
+        }
+
+        // check for decimal
+        else if (currentChar == '.'){
+            cout << "decimal: " << currentChar << "\n";
+        }   
+
+        // unknown char
+        else{
+            cout << "unknown\n";
+        }
+        
+        
+
     }
 }
 
@@ -25,5 +50,7 @@ int main(){
         notActive = true;
     }
 
-    cout << problem;
+    tokenizer(problem);
+
+    return 0;
 }
