@@ -19,9 +19,9 @@ void tokenizer(const string& problem){
         else if (currentChar == '(' || currentChar == ')'){
             cout << "parenthesis: " << currentChar << "\n";
         }
-        // check for whitespace
-        else if (currentChar == ' '){
-            cout << "whitespace\n";
+        // ignore whitespaces
+        else if (isspace(currentChar)){
+            continue;
         }
 
         // check for decimal
