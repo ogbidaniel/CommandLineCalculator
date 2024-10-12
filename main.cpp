@@ -1,14 +1,13 @@
 #include <iostream>
+#include <vector>
 #include <string>
 using namespace std;
 
 
-void tokenizer(const string& problem){
-    char dig[11] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.'};
-    char opp[4] = {'+', '-', '*', '/'};
-    char par[2] = {'(', ')'};
+ vector<string> tokenizer(const string& problem){
     string number = "";
     bool decimalAdded{false};
+    vector<string> tokens;
 
 
     for(size_t i = 0; i < problem.size(); i++){
@@ -32,17 +31,23 @@ void tokenizer(const string& problem){
         // end accumulator and print out other parts of the problem
         else{
             if (number != ""){
-                cout << number << endl;
+                tokens.push_back(number); 
                 number = "";
                 decimalAdded = false;
             }
-            cout << currentChar << endl;
+            tokens.push_back(string(1, currentChar));// Line 38
         }
     }
-    // print the final token
+    // add the final token
     if (number != ""){
-        cout << number << endl;
+        tokens.push_back(number);
     }
+
+    // // loop through the vector
+    // for(size_t i = 0; i < tokens.size(); i++){
+    //     cout << tokens[i] << endl;
+    // }
+    return tokens;
 }
 
 int main(){
